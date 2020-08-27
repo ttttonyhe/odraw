@@ -1,17 +1,19 @@
 import dynamic from "next/dynamic";
-const Main = dynamic(
+const IndexMain = dynamic(
   () => {
-    return import("./main");
+    return import("../components/index");
   },
   { ssr: false }
 );
 
-const Home = () => {
+const Index = (
+  props: JSX.IntrinsicAttributes & { children?: import("react").ReactNode }
+) => {
   return (
     <div>
-      <Main />
+      <IndexMain {...props} />
     </div>
   );
 };
 
-export default Home;
+export default Index;

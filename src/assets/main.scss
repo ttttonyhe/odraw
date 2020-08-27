@@ -1,0 +1,568 @@
+html {
+  background: #fcfcfc;
+}
+body {
+  background: #fcfcfc;
+}
+.odraw-header-div {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 0px;
+  @media screen and (min-width: 1024px) {
+    margin-bottom: 20px;
+  }
+  padding: 3px 50px 0px 40px;
+  background: #ffffff;
+  height: 65px;
+  .odraw-header-logo {
+    cursor: pointer;
+    margin: 0 auto;
+    @media screen and (min-width: 1024px) {
+      margin: 0;
+    }
+    img {
+      width: 250px;
+      margin-top: 1px;
+      margin-right: -5px;
+    }
+  }
+  .odraw-header-title {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
+    flex: 1;
+    text-align: center;
+    padding-top: 15px;
+    h1 {
+      margin: 0px;
+      color: #333;
+      letter-spacing: 1px;
+      font-size: 19px;
+    }
+    p {
+      margin: 0px;
+      color: #999;
+      letter-spacing: 0.5px;
+      font-size: 10px;
+    }
+  }
+  .odraw-header-items {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: flex;
+    }
+    transition: all 0.2s ease-in-out 0s;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: right;
+    div {
+      cursor: pointer;
+    }
+    .odraw-header-item-current {
+      font-weight: 600;
+    }
+    .odraw-header-item-home {
+      &:hover {
+        background: #eff0f5;
+      }
+      padding: 6px 22px 0px 22px;
+      height: 37px;
+      margin-top: 12px;
+      letter-spacing: 1px;
+      border-radius: 5px;
+      margin-right: 15px;
+      a {
+        color: #333;
+      }
+    }
+    .odraw-header-item-login {
+      &:hover {
+        opacity: 0.95;
+      }
+      box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 2px;
+      background-color: #007aff;
+      padding: 7px 22px 0px 22px;
+      height: 37px;
+      letter-spacing: 1px;
+      border-radius: 5px;
+      margin-top: 11px;
+      a {
+        color: #fcfcfc;
+        text-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px;
+      }
+    }
+    .odraw-header-item-logout {
+      &:hover {
+        opacity: 0.95;
+        background-color: #e74f56;
+        .in {
+          opacity: 0.3;
+          margin-right: -89px;
+        }
+        .in-four {
+          margin-right: -68px !important;
+        }
+        .out {
+          opacity: 1;
+          display: inline-block;
+          color: #fcfcfc;
+          text-shadow: rgba(0, 0, 0, 0.18) 0px 1px 1px;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+      }
+      .out {
+        display: none;
+      }
+      box-shadow: rgba(0, 0, 0, 0.04) 0px 1px 2px;
+      background-color: #37a4a1;
+      padding: 7px 22px 0px 22px;
+      height: 37px;
+      letter-spacing: 1px;
+      border-radius: 5px;
+      margin-top: 11px;
+      a {
+        color: #fcfcfc;
+        text-shadow: rgba(0, 0, 0, 0.08) 0px 1px 1px;
+      }
+    }
+  }
+}
+
+.odraw-login-div {
+  max-width: 100%;
+  @media screen and (min-width: 1024px) {
+    max-width: 1024px;
+    margin-top: 9%;
+  }
+  margin: 0 auto;
+  height: 100%;
+  width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  align-items: center;
+  @media screen and (min-width: 1024px) {
+    border: 1px solid #eee;
+  }
+  border-radius: 8px;
+  .odraw-login-notice {
+    display: none;
+    @media screen and (min-width: 1024px) {
+      display: block;
+    }
+    height: 500px;
+    flex: 1;
+    background: #e4f2f7;
+    padding: 30px;
+    border-radius: 8px 0px 0px 8px;
+    border-right: 1px solid #eee;
+
+    .odraw-login-notice-div {
+      padding: 30px;
+      width: 100%;
+      margin-bottom: 10px;
+      background: #e4f2f7;
+      h2 {
+        font-size: 25px;
+        color: rgba(58, 115, 114, 73%);
+      }
+      p {
+        font-size: 17px;
+        color: rgba(58, 115, 114, 73%);
+        margin: 0px;
+      }
+    }
+    .odraw-login-notice-copyright {
+      padding: 5px 30px;
+      background: #e4f2f7;
+      width: 100%;
+      p {
+        font-size: 17px;
+        color: rgba(58, 115, 114, 73%);
+        margin: 0px;
+      }
+    }
+  }
+  .odraw-login-form {
+    height: 100%;
+    @media screen and (min-width: 1024px) {
+      height: 500px;
+      border-radius: 0px 8px 8px 0px;
+    }
+    flex: 1;
+    padding: 65px 50px 50px 50px;
+    background: #ffffff;
+    overflow: hidden;
+    overflow-y: auto;
+    h2 {
+      color: #2f3037;
+      text-align: center;
+      font-size: 35px;
+      margin-bottom: 0px;
+      letter-spacing: 1px;
+    }
+    p {
+      text-align: center;
+      margin: 0px;
+      color: #999;
+      margin-bottom: 40px;
+      font-size: 16px;
+    }
+    input {
+      padding: 1px 6px 0px 6px;
+      font-size: 18px;
+      border-radius: 4px;
+    }
+    .odraw-login-input-div {
+      margin-bottom: 20px;
+    }
+    .ant-input-affix-wrapper-lg {
+      padding: 8px 15px;
+      font-size: 20px;
+      border-radius: 4px;
+      color: #777;
+      margin-bottom: 15px;
+    }
+    button {
+      cursor: pointer;
+      background: linear-gradient(
+          270deg,
+          rgba(82, 114, 244, 1) 0%,
+          rgba(0, 170, 231, 1) 100%
+        )
+        rgba(0, 170, 231, 0.31);
+      background-color: rgba(0, 170, 231, 0.31);
+      background-blend-mode: saturation;
+      color: #fff;
+      border: none;
+      outline: none;
+      width: 100%;
+      padding: 12px 0px;
+      font-size: 18px;
+      border-radius: 4px;
+      letter-spacing: 0.5px;
+      transition: all 0.2s ease-in-out 0s;
+      &:hover {
+        background-color: #1989fa !important;
+      }
+    }
+  }
+}
+
+.odraw-container {
+  padding: 0px;
+  max-width: 100%;
+  margin: 0 auto;
+  @media screen and (min-width: 1024px) {
+    max-width: 1024px;
+    padding: 20px 50px;
+  }
+  .odraw-container-top {
+    background: #fff;
+    padding: 20px 20px 0px 20px;
+    border-bottom: 1px solid #eee;
+    @media screen and (min-width: 1024px) {
+      border-radius: 10px 10px 0px 0px;
+      border: 1px solid #eee;
+      padding: 40px 40px 0px 40px;
+    }
+    .odraw-container-top-div {
+      margin-bottom: 30px;
+      @media screen and (min-width: 1024px) {
+        margin-bottom: 40px;
+      }
+      display: flex;
+      .odraw-container-top-info {
+        flex: 1;
+        text-align: center;
+        overflow: hidden;
+        @media screen and (min-width: 1024px) {
+          text-align: left;
+        }
+        h1 {
+          text-overflow: ellipsis;
+          overflow: hidden;
+          white-space: nowrap;
+          font-size: 25px;
+          @media screen and (min-width: 1024px) {
+            font-size: 32px;
+          }
+          margin: 0px;
+        }
+        p {
+          font-size: 15px;
+          @media screen and (min-width: 1024px) {
+            font-size: 18px;
+          }
+          margin: 0px;
+          color: #777;
+        }
+      }
+      .odraw-container-top-card {
+        display: none;
+        @media screen and (min-width: 1024px) {
+          display: flex;
+        }
+        p {
+          margin: 0px;
+        }
+        .left-div {
+          background: #333;
+          margin-right: 15px;
+          width: fit-content;
+          border-radius: 5px;
+          p {
+            text-align: center;
+            &:nth-child(1) {
+              height: 65%;
+              background: #fff;
+              font-size: 20px;
+              padding: 17% 10px;
+              border: 1px solid #eee;
+              border-radius: 4px 4px 0px 0px;
+            }
+            &:nth-child(2) {
+              color: #fff;
+              padding: 6.5% 7px 0px 7px;
+            }
+          }
+        }
+        .right-div {
+          background: #2aaced;
+          width: fit-content;
+          border-radius: 5px;
+          p {
+            text-align: center;
+            &:nth-child(1) {
+              height: 65%;
+              background: #fff;
+              font-size: 20px;
+              padding: 17% 10px;
+              border: 1px solid #eee;
+              border-radius: 4px 4px 0px 0px;
+            }
+            &:nth-child(2) {
+              color: #fff;
+              padding: 6.5% 7px 0px 7px;
+            }
+          }
+        }
+        .right-none {
+          background: #333 !important;
+        }
+      }
+    }
+    .odraw-container-top-menu {
+      display: flex;
+      div {
+        cursor: pointer;
+        transition: all 0.1s;
+        &:hover {
+          font-weight: 600;
+        }
+        a {
+          color: #333;
+          font-size: 15px;
+          @media screen and (min-width: 1024px) {
+            font-size: 16px;
+          }
+          letter-spacing: 0.5px;
+        }
+        padding: 0px 3px 4px 3px;
+        @media screen and (min-width: 1024px) {
+          margin: 0px 15px 0px 0px;
+          &:last-child {
+            margin-right: 0px;
+          }
+        }
+        margin: 0 auto;
+      }
+      .odraw-container-top-menu-current {
+        border-bottom: 2px solid #333;
+        font-weight: 600;
+      }
+    }
+  }
+  .odraw-container-main {
+    background: #fff;
+    padding: 20px;
+    @media screen and (min-width: 1024px) {
+      border-radius: 0px 0px 10px 10px;
+      border: 1px solid #eee;
+      border-top: none;
+      padding: 40px;
+    }
+    .odraw-container-item {
+      display: flex;
+      margin-bottom: 15px;
+      border: 1px solid #eee;
+      padding: 15px 20px 5px 20px;
+      border-radius: 5px;
+      box-shadow: 0px 1px 1px 0px #f7f8f9;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+      div {
+        &:nth-child(1) {
+          flex: 1;
+          overflow: hidden;
+          h3 {
+            font-size: 14px;
+            @media screen and (min-width: 1024px) {
+              font-size: 19px;
+            }
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+          p {
+            em {
+              background: #ecedee;
+              color: #999;
+              font-style: normal;
+              font-size: 10px;
+              padding: 3px 5px 4px 6px;
+              &:nth-child(2) {
+                display: none;
+                @media screen and (min-width: 1024px) {
+                  display: initial;
+                }
+              }
+              @media screen and (min-width: 1024px) {
+                padding: 3px 8px 4px 9px;
+                font-size: initial;
+              }
+              border-radius: 3px;
+              margin-right: 5px;
+              letter-spacing: 0.5px;
+              &:last-child {
+                margin-right: 0px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.odraw-admin-key-input {
+  margin-bottom: 10px;
+}
+
+.odraw-admin-btn {
+  width: 100%;
+}
+
+.odraw-admin-key-div {
+  margin-bottom: 20px;
+  h2 {
+    margin: 0px;
+  }
+  p {
+    margin: 0px;
+  }
+}
+
+.odraw-admin-key-btn {
+  padding-top: 14px;
+  display: flex;
+  button {
+    margin-right: 10px;
+    &:last-child {
+      margin-right: 0px;
+    }
+  }
+}
+
+.odraw-draw-div {
+  text-align: center;
+  h2 {
+    font-size: 25px;
+    margin: 0px;
+    letter-spacing: 1px;
+    margin-bottom: -5px;
+  }
+  h1 {
+    margin: 0px;
+    font-size: 70px;
+    margin-bottom: 5px;
+    letter-spacing: -3px;
+  }
+  p {
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-bottom: 0px;
+  }
+  table {
+    margin: 20px 0px;
+    width: 100%;
+    tr {
+      border: 1px solid #e1e6f0;
+      font-size: 15px;
+      color: #666;
+      td {
+        padding: 9px;
+        white-space: nowrap;
+        &:nth-child(1) {
+          border-right: 1px solid #e1e6f0;
+        }
+      }
+    }
+  }
+  button {
+    margin-top: 10px;
+    width: 100%;
+  }
+}
+
+.odraw-draw-table-div {
+  overflow: hidden;
+  overflow-x: scroll;
+}
+
+.odraw-container-pwd-input {
+  margin-top: 20px;
+  width: 100%;
+  @media screen and (min-width: 1024px) {
+    width: 30%;
+  }
+
+  input {
+    width: 100%;
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+
+  button {
+    width: 100%;
+  }
+}
+
+.odraw-container-pwd-notice {
+  font-size: 16px;
+  color: #555;
+}
+
+.odraw-container-item-divide {
+  margin-top: 50px;
+}
+
+.odraw-admin-upload-notice {
+  margin-top: 30px;
+}
+
+.odraw-footer {
+  text-align: center;
+  color: #999;
+  position: absolute;
+  bottom: 40px;
+  width: 100%;
+  p {
+    font-size: 15px;
+  }
+}

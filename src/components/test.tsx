@@ -93,18 +93,17 @@ const Main = () => {
   const modifyPost = () => {
     axios({
       method: "post",
-      url: "http://localhost:3344/userModify",
+      url: "http://localhost:3344/exportExcel",
       data: Qs.stringify({
-        username: "安徽新华学院",
-        password: "666666",
-        newPassword: "666666",
+        name: "科技创新和未来产业",
+        type: "普通高校"
       }),
       headers: {
         Authorization: JWTToken,
       },
     })
       .then((res) => {
-        console.log(res.data.msg);
+        console.log(res.data);
       })
       .catch((err) => {
         console.error(err);
