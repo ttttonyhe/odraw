@@ -7,6 +7,7 @@ import currentUserJWTContext from "../utils/currentUserJWTContext";
 import Router from "next/router";
 import { Skeleton, Result, Button, Modal, Input, notification } from "antd";
 import Admin from "../components/admin";
+import Link from "next/link";
 
 const openNotificationWithIcon = (type: string, des: string) => {
   notification[type]({
@@ -162,7 +163,16 @@ const Index = () => {
           </div>
           {error ? (
             <div>
-              <Result status="500" title="500" subTitle="数据请求错误" />
+              <Result
+                status="500"
+                title="500"
+                subTitle="数据请求错误"
+                extra={
+                  <Link href="/login">
+                    <Button type="primary">重新登录</Button>
+                  </Link>
+                }
+              />
             </div>
           ) : !data || loadingStatus ? (
             <div className="odraw-container-loading">
@@ -182,11 +192,11 @@ const Index = () => {
                     <div className="odraw-container-top-card-inside">
                       <div className="left-div">
                         <p>{data.length - 1} 项</p>
-                        <p>入围决赛</p>
+                        <p>{"入围决赛"}</p>
                       </div>
                       <div className="right-div">
                         <p>{data[0].unViewCount} 项</p>
-                        <p>暂未抽签</p>
+                        <p>{"暂未抽签"}</p>
                       </div>
                     </div>
                   </div>
@@ -200,7 +210,7 @@ const Index = () => {
                       setMenuItem(1);
                     }}
                   >
-                    <a>项目列表</a>
+                    <a>{"项目列表"}</a>
                   </div>
                   <div
                     className={
@@ -210,7 +220,7 @@ const Index = () => {
                       setMenuItem(2);
                     }}
                   >
-                    <a>密码设置</a>
+                    <a>{"密码设置"}</a>
                   </div>
                 </div>
               </div>
@@ -255,7 +265,7 @@ const Index = () => {
                         size="large"
                         loading={drawLoading}
                       >
-                        开始抽签
+                        {"开始抽签"}
                       </Button>
                     </div>
                   ) : (
@@ -302,7 +312,7 @@ const Index = () => {
                                   );
                                 }}
                               >
-                                开始抽签
+                                {"开始抽签"}
                               </Button>
                             ) : (
                               <Button type="primary" danger>
@@ -337,7 +347,7 @@ const Index = () => {
                           postChangePwd();
                         }}
                       >
-                        提交修改
+                        {"提交修改"}
                       </Button>
                     </div>
                   </div>
