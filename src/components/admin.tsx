@@ -467,7 +467,7 @@ const Admin = () => {
             </div>
           </div>
         ) : (
-          <div className="odraw-container-loading">
+          <div>
             <div>
               <Upload {...recordsProps}>
                 <Button>

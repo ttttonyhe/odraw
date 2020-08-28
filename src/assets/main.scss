@@ -40,6 +40,12 @@ body {
     display: none;
     @media screen and (min-width: 1024px) {
       display: block;
+      text-align: left;
+      border-left: 1px solid #eee;
+      margin-top: -3px;
+      padding-bottom: 3px;
+      padding-top: 18px;
+      padding-left: 25px;
     }
     flex: 1;
     text-align: center;
@@ -49,12 +55,6 @@ body {
       color: #333;
       letter-spacing: 1px;
       font-size: 19px;
-    }
-    p {
-      margin: 0px;
-      color: #999;
-      letter-spacing: 0.5px;
-      font-size: 10px;
     }
   }
   .odraw-header-items {
@@ -596,7 +596,7 @@ body {
   p {
     font-size: 15px;
     margin-bottom: 0px;
-    a{
+    a {
       color: inherit !important;
       text-decoration: none;
     }
