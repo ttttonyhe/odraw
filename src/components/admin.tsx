@@ -7,6 +7,7 @@ import currentUserJWTContext from "../utils/currentUserJWTContext";
 import Router from "next/router";
 import { Skeleton, Result, Modal, Button, Input, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
+import Link from "next/link";
 
 const Admin = () => {
   // 读取 Context
@@ -201,9 +202,22 @@ const Admin = () => {
     return (
       <div className="odraw-container">
         {error ? (
-          <Result status="500" title="500" subTitle="数据请求错误" />
+          <Result
+            status="500"
+            title="500"
+            subTitle="数据请求错误"
+            extra={
+              <Link href="/login">
+                <Button type="primary">重新登录</Button>
+              </Link>
+            }
+          />
         ) : !data || loadingStatus ? (
-          <Skeleton active />
+          <div className="odraw-container-loading">
+            <Skeleton active />
+            <Skeleton active />
+            <Skeleton active />
+          </div>
         ) : data.length > 1 ? (
           <div>
             <div className="odraw-container-top">
@@ -404,7 +418,7 @@ const Admin = () => {
                   </div>
                 </div>
               ) : menuItem === 3 ? (
-                <div>
+                <div className="odraw-container-loading">
                   <div>
                     <Upload {...recordsProps}>
                       <Button>
