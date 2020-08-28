@@ -31,16 +31,18 @@ const Admin = () => {
     const [loadingStatus, setLoadingStatus] = React.useState<boolean>(true);
 
     // 获取数据
-    const { data, error } = useSWR("https://node.ouorz.com/getAllCates", (url) =>
-      axios({
-        method: "get",
-        url: url,
-        headers: {
-          Authorization: JWTToken,
-        },
-      }).then((res) => {
-        return res.data.cates;
-      })
+    const { data, error } = useSWR(
+      "https://node.ouorz.com/getAllCates",
+      (url) =>
+        axios({
+          method: "get",
+          url: url,
+          headers: {
+            Authorization: JWTToken,
+          },
+        }).then((res) => {
+          return res.data.cates;
+        })
     );
 
     // 提交 Key 设置
@@ -241,16 +243,6 @@ const Admin = () => {
                   }}
                 >
                   <a>数据导入</a>
-                </div>
-                <div
-                  className={
-                    menuItem === 4 ? "odraw-container-top-menu-current" : ""
-                  }
-                  onClick={() => {
-                    setMenuItem(4);
-                  }}
-                >
-                  <a>使用须知</a>
                 </div>
               </div>
             </div>
@@ -455,8 +447,6 @@ const Admin = () => {
                     </ul>
                   </div>
                 </div>
-              ) : menuItem === 4 ? (
-                <div>Item4</div>
               ) : (
                 ""
               )}
