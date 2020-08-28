@@ -8,6 +8,7 @@ const User = dynamic(
   },
   { ssr: false }
 );
+import Head from 'next/head'
 
 // 页面顶部
 const Header = ({ router }) => {
@@ -17,6 +18,11 @@ const Header = ({ router }) => {
   };
   return (
     <div className="odraw-header-div">
+      <Head>
+        <title>ODraw 抽签平台</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <link rel="shortcut icon" href="https://static.ouorz.com/odraw_ico.ico" id="favicon" type="image/vnd.microsoft.icon" />
+      </Head>
       <Link href="/">
         <div className="odraw-header-logo">
           <img src="https://static.ouorz.com/match_logo.png" />
