@@ -24,7 +24,7 @@ const LoginMain = ({ router, ...contextProps }) => {
   const doLoginAction = () => {
     axios
       .post(
-        "http://localhost:3344/userLogin",
+        "https://node.ouorz.com/userLogin",
         Qs.stringify({
           username: userName,
           password: passWord,

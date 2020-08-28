@@ -526,10 +526,11 @@ body {
 }
 
 .odraw-container-pwd-input {
-  margin-top: 20px;
+  margin-top: 0px;
+  margin-bottom: -10px;
   width: 100%;
   @media screen and (min-width: 1024px) {
-    width: 30%;
+    display: flex;
   }
 
   input {
@@ -559,8 +560,7 @@ body {
 .odraw-footer {
   text-align: center;
   color: #999;
-  position: absolute;
-  bottom: 40px;
+  margin: 20px 0px 40px 0px;
   width: 100%;
   p {
     font-size: 15px;

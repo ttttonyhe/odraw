@@ -4,11 +4,11 @@ import Qs from "qs";
 import React from "react";
 import currentUserContext from "../utils/currentUserNameContext";
 import currentUserJWTContext from "../utils/currentUserJWTContext";
-import { withRouter } from "next/router";
+import Router from "next/router";
 import { Skeleton, Result, Modal, Button, Input, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
 
-const AdminMain = ({ router }) => {
+const Admin = () => {
   // 读取 Context
   const currentUserName = React.useContext(currentUserContext);
   const JWTToken = React.useContext(currentUserJWTContext);
@@ -31,7 +31,7 @@ const AdminMain = ({ router }) => {
     const [loadingStatus, setLoadingStatus] = React.useState<boolean>(true);
 
     // 获取数据
-    const { data, error } = useSWR("http://localhost:3344/getAllCates", (url) =>
+    const { data, error } = useSWR("https://node.ouorz.com/getAllCates", (url) =>
       axios({
         method: "get",
         url: url,
@@ -45,27 +45,31 @@ const AdminMain = ({ router }) => {
 
     // 提交 Key 设置
     const setKey = () => {
-      axios({
-        method: "post",
-        url: "http://localhost:3344/setCateKey",
-        data: Qs.stringify({
-          name: nowCate,
-          type: nowType,
-          key: nowKey,
-        }),
-        headers: {
-          Authorization: JWTToken,
-        },
-      })
-        .then((res) => {
-          if (res.data.code === 104) {
-            mutate("http://localhost:3344/getAllCates");
-            setModalStatus(false);
-          }
+      if (nowKey) {
+        axios({
+          method: "post",
+          url: "https://node.ouorz.com/setCateKey",
+          data: Qs.stringify({
+            name: nowCate,
+            type: nowType,
+            key: nowKey,
+          }),
+          headers: {
+            Authorization: JWTToken,
+          },
         })
-        .catch((err) => {
-          alert("提交失败\n" + err);
-        });
+          .then((res) => {
+            if (res.data.code === 104) {
+              mutate("https://node.ouorz.com/getAllCates");
+              setModalStatus(false);
+            }
+          })
+          .catch((err) => {
+            alert("提交失败\n" + err);
+          });
+      } else {
+        alert("标签不能为空");
+      }
     };
 
     // 提交抽签请求
@@ -74,7 +78,7 @@ const AdminMain = ({ router }) => {
         setDrawModalStatus(true);
         axios({
           method: "post",
-          url: "http://localhost:3344/drawRecordsByCate",
+          url: "https://node.ouorz.com/drawRecordsByCate",
           data: Qs.stringify({
             name: cate,
             type: type,
@@ -85,7 +89,7 @@ const AdminMain = ({ router }) => {
         })
           .then((res) => {
             if (res.data.code === 104) {
-              mutate("http://localhost:3344/getAllCates");
+              mutate("https://node.ouorz.com/getAllCates");
               setDrawModalStatus(false);
             }
           })
@@ -109,7 +113,7 @@ const AdminMain = ({ router }) => {
     const postChangePwd = () => {
       axios({
         method: "post",
-        url: "http://localhost:3344/userModify",
+        url: "https://node.ouorz.com/userModify",
         data: Qs.stringify({
           username: currentUserName,
           password: oldPwd,
@@ -131,46 +135,50 @@ const AdminMain = ({ router }) => {
         });
     };
 
-    const startExporting = (name, type) => {
-      axios({
-        method: "post",
-        url: "http://localhost:3344/exportExcel",
-        data: Qs.stringify({
-          name: name,
-          type: type,
-        }),
-        headers: {
-          Authorization: JWTToken,
-        },
-      })
-        .then((res) => {
-          if (res.data.code === 104) {
-            // 新窗口下载文件
-            if (typeof document !== "undefined") {
-              const url =
-                "http://localhost:3344/files/download/" +
-                res.data.file +
-                ".xlsx";
-              let a = document.createElement("a");
-              a.setAttribute("href", url);
-              a.setAttribute("target", "_blank");
-              document.body.appendChild(a);
-              a.click();
-            }
-          } else {
-            alert("导出错误");
-          }
+    const startExporting = (name, type, status) => {
+      if (status) {
+        axios({
+          method: "post",
+          url: "https://node.ouorz.com/exportExcel",
+          data: Qs.stringify({
+            name: name,
+            type: type,
+          }),
+          headers: {
+            Authorization: JWTToken,
+          },
         })
-        .catch((err) => {
-          alert("导出服务错误");
-        });
+          .then((res) => {
+            if (res.data.code === 104) {
+              // 新窗口下载文件
+              if (typeof document !== "undefined") {
+                const url =
+                  "https://node.ouorz.com/files/download/" +
+                  res.data.file +
+                  ".xlsx";
+                let a = document.createElement("a");
+                a.setAttribute("href", url);
+                a.setAttribute("target", "_blank");
+                document.body.appendChild(a);
+                a.click();
+              }
+            } else {
+              alert("导出错误");
+            }
+          })
+          .catch((err) => {
+            alert("导出服务错误");
+          });
+      } else {
+        alert("抽签还未完成");
+      }
     };
 
     // 上传配置
     const recordsProps = {
       accept: ".xlsx",
       name: "recordsExcel",
-      action: "http://localhost:3344/uploadRecords",
+      action: "https://node.ouorz.com/uploadRecords",
       headers: {
         Authorization: JWTToken,
       },
@@ -178,7 +186,7 @@ const AdminMain = ({ router }) => {
     const usersProps = {
       accept: ".xlsx",
       name: "usersExcel",
-      action: "http://localhost:3344/uploadUsers",
+      action: "https://node.ouorz.com/uploadUsers",
       headers: {
         Authorization: JWTToken,
       },
@@ -334,7 +342,11 @@ const AdminMain = ({ router }) => {
                           <Button
                             type="default"
                             onClick={() => {
-                              startExporting(item.cateName, item.cateType);
+                              startExporting(
+                                item.cateName,
+                                item.cateType,
+                                item.drawStatus
+                              );
                             }}
                           >
                             数据导出
@@ -497,9 +509,13 @@ const AdminMain = ({ router }) => {
       </div>
     );
   } else {
-    router.push("/login");
+    React.useEffect(() => {
+      Router.push({
+        pathname: "/login",
+      });
+    });
     return <div></div>;
   }
 };
 
-export default withRouter(AdminMain);
+export default Admin;
