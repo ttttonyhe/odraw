@@ -7,6 +7,7 @@ import {
   InfoCircleOutlined,
   UserOutlined,
   KeyOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
 import { withRouter } from "next/router";
 
@@ -20,8 +21,10 @@ const openNotificationWithIcon = (type: string, des: string) => {
 const LoginMain = ({ router, ...contextProps }) => {
   const [userName, setUserName] = React.useState<string>("");
   const [passWord, setPassWord] = React.useState<string>("");
+  const [loginStatus, setLoginStatus] = React.useState<boolean>(false);
 
   const doLoginAction = () => {
+    setLoginStatus(true);
     axios
       .post(
         "https://node.ouorz.com/userLogin",
@@ -38,10 +41,12 @@ const LoginMain = ({ router, ...contextProps }) => {
           contextProps.setCurrentJWT(reactLocalStorage.get("odrawUser"));
           router.push("/");
         } else {
+          setLoginStatus(false);
           openNotificationWithIcon("error", "用户名或密码可能其一或全部不正确");
         }
       })
       .catch(() => {
+        setLoginStatus(false);
         openNotificationWithIcon("error", "用户名或密码可能其一或全部不正确");
       });
   };
@@ -56,7 +61,9 @@ const LoginMain = ({ router, ...contextProps }) => {
               &nbsp;&nbsp;账户登入提示
             </h2>
             <p>
-              欢迎使用第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台。账户初始登入用户名为 <b>学校全称(中文)</b>，密码为 <b>666666</b>。请在首次登入后立刻修改密码。
+              欢迎使用第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台。账户初始登入用户名为{" "}
+              <b>学校全称(中文)</b>，密码为 <b>666666</b>
+              。请在首次登入后立刻修改密码。
             </p>
           </div>
           <div className="odraw-login-notice-copyright">
@@ -95,7 +102,16 @@ const LoginMain = ({ router, ...contextProps }) => {
             </div>
           </div>
           <div>
-            <button onClick={doLoginAction}>登录账户</button>
+            <button onClick={doLoginAction}>
+              {loginStatus ? (
+                <span>
+                  <LoadingOutlined />
+                  &nbsp;正在登陆
+                </span>
+              ) : (
+                "登录账户"
+              )}
+            </button>
           </div>
         </div>
       </div>
