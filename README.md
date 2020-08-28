@@ -1,30 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## ODraw
+第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台
 
-## Getting Started
+<br/>
 
-First, run the development server:
+`master` branch looks like shit, see the true project at `main` branch
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+<br/>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 主要依赖
+#### 前端
++ React.js (Next.js)
++ Ant Design React
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+#### 后端
++ MongoDB
++ Express.js
++ Express-JWT
++ Excel.js
++ Convert-excel-to-json
 
-## Learn More
+<br/>
 
-To learn more about Next.js, take a look at the following resources:
+### 功能列表
++ 用户登录
++ 用户密码修改
++ 项目抽签
++ 项目分类数据处理
++ 项目分类标签 设置
++ 项目数据 .xlsx 导入
++ 用户数据 .xlsx 导入
++ 项目数据 .xlsx 导出
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<br/>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+### 赞助
+Your name will be on the list [Donation](https://www.ouorz.com/donation)
+<br/>
 
-## Deploy on Vercel
+![Donate](https://i.loli.net/2019/02/18/5c6a80afd1e26.png)
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+<br/>
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+File an issue if you encountered any problem
+<br/>
+I will reply you as soon as possible
