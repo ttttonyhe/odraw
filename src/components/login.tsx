@@ -58,16 +58,16 @@ const LoginMain = ({ router, ...contextProps }) => {
           <div className="odraw-login-notice-div">
             <h2>
               <InfoCircleOutlined />
-              &nbsp;&nbsp;账户登入提示
+              &nbsp;&nbsp;提示
             </h2>
             <p>
-              欢迎使用第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台。账户初始登入用户名为{" "}
-              <b>学校全称(中文)</b>，密码为 <b>666666</b>
-              。请在首次登入后立刻修改密码。
+              欢迎使用第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台。用户名与初始密码已经发布。
+              <br/><br/>
+              <p>请在<b> 9 月 1 日 22:00 </b>前将密码修改完毕并核对信息是否正确。</p>
             </p>
           </div>
           <div className="odraw-login-notice-copyright">
-            <p>&copy; 2020 安徽工程大学团委</p>
+            <p>安徽工程大学团委</p>
           </div>
         </div>
         <div className="odraw-login-form">
