@@ -3,6 +3,10 @@
 
 <br/>
 
+`master` branch looks like shit, see the true project at `main` branch
+
+<br/>
+
 ### 主要依赖
 #### 前端
 + React.js (Next.js)

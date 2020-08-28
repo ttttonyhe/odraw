@@ -266,11 +266,6 @@ body {
   max-width: 100%;
   margin: 0 auto;
   @media screen and (min-width: 1024px) {
-    div {
-      &:nth-child(1) {
-        background: #ffffff;
-      }
-    }
     max-width: 1024px;
     padding: 20px 50px;
   }
