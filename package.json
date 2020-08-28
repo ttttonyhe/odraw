@@ -21,6 +21,7 @@
     "qs": "^6.9.4",
     "react": "16.13.1",
     "react-dom": "16.13.1",
+    "react-use-localstorage": "^3.5.3",
     "reactjs-localstorage": "^1.0.1",
     "sass": "^1.26.10",
     "swr": "^0.3.0"

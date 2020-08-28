@@ -67,7 +67,7 @@ const LoginMain = ({ router, ...contextProps }) => {
             </p>
           </div>
           <div className="odraw-login-notice-copyright">
-            <p>&copy; 2020 安徽工程大学团委会</p>
+            <p>&copy; 2020 安徽工程大学团委</p>
           </div>
         </div>
         <div className="odraw-login-form">

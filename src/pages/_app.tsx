@@ -6,13 +6,16 @@ import Header from "../components/header";
 import Footer from "../components/footer";
 import "../assets/main.scss";
 
+const jwt =
+  typeof window !== "undefined" ? window.localStorage.getItem("odrawUser") : "";
+const name =
+  typeof window !== "undefined"
+    ? window.localStorage.getItem("odrawUserName")
+    : "";
+
 function MyApp({ Component, pageProps }) {
-  const [currentUser, setCurrentUser] = React.useState<string>();
-  const [currentJWT, setCurrentJWT] = React.useState<string>();
-  React.useEffect(() => {
-    setCurrentUser(window.localStorage.getItem("odrawUserName"));
-    setCurrentJWT(window.localStorage.getItem("odrawUser"));
-  });
+  const [currentUser, setCurrentUser] = React.useState<string>(name);
+  const [currentJWT, setCurrentJWT] = React.useState<string>(jwt);
   return (
     <NameProvider value={currentUser}>
       <JWTProvider value={currentJWT}>
