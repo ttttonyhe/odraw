@@ -596,6 +596,10 @@ body {
   p {
     font-size: 15px;
     margin-bottom: 0px;
+    a{
+      color: inherit !important;
+      text-decoration: none;
+    }
   }
 }
 
