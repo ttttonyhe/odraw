@@ -63,7 +63,7 @@ const LoginMain = ({ router, ...contextProps }) => {
             <p>
               欢迎使用第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台。用户名与初始密码已经发布。
               <br/><br/>
-              <p>请在<b> 9 月 1 日 22:00 </b>前将密码修改完毕并核对信息是否正确。</p>
+              请在<b> 9 月 1 日 22:00 </b>前将密码修改完毕并核对信息是否正确。
             </p>
           </div>
           <div className="odraw-login-notice-copyright">
