@@ -7,7 +7,6 @@ import currentUserJWTContext from "../utils/currentUserJWTContext";
 import Router from "next/router";
 import { Skeleton, Result, Button, Modal, Input, notification } from "antd";
 import Admin from "../components/admin";
-import Link from "next/link";
 
 const openNotificationWithIcon = (type: string, des: string) => {
   notification[type]({
@@ -177,7 +176,7 @@ const Index = () => {
                   <div className="odraw-container-top-card">
                     <div className="left-div">
                       <p>{data.length - 1} 项</p>
-                      <p>入围决赛</p>
+                      <p>所有项目</p>
                     </div>
                     <div className="right-div">
                       <p>{data[0].unViewCount} 项</p>

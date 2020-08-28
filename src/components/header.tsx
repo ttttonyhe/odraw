@@ -25,11 +25,11 @@ const Header = ({ router }) => {
       </Head>
       <Link href="/">
         <div className="odraw-header-logo">
-          <img src="https://static.ouorz.com/match_logo.png" />
+          <img src="https://static.ouorz.com/odraw_demo_logo.png" />
         </div>
       </Link>
       <div className="odraw-header-title">
-        <h1>赛事抽签平台</h1>
+        <h1>抽签平台</h1>
       </div>
       <div className="odraw-header-items">
         <Link href="/">

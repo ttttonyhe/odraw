@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <div className="odraw-footer">
       <p>
-        &copy; 2020 安徽工程大学团委&nbsp;·&nbsp;<a href="https://github.com/HelipengTony/odraw" target="_blank"><GithubOutlined /></a>
+        <a href="https://github.com/HelipengTony/odraw" target="_blank"><GithubOutlined /> Open-Source</a>
       </p>
     </div>
   );
