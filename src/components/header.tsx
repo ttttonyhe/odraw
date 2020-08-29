@@ -27,6 +27,14 @@ const Header = ({ router }) => {
           id="favicon"
           type="image/vnd.microsoft.icon"
         />
+        <meta name="renderer" content="webkit" />
+        <meta name="force-rendering" content="webkit" />
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <script>
+          /*@cc_on
+          window.location.href="http://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href);
+          @*/
+        </script>
       </Head>
       <Link href="/">
         <div className="odraw-header-logo">
