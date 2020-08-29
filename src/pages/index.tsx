@@ -7,6 +7,7 @@ import currentUserJWTContext from "../utils/currentUserJWTContext";
 import Router from "next/router";
 import { Skeleton, Result, Button, Modal, Input, notification } from "antd";
 import Admin from "../components/admin";
+import Link from "next/link";
 
 const openNotificationWithIcon = (type: string, des: string) => {
   notification[type]({
@@ -157,30 +158,46 @@ const Index = () => {
     return (
       <div>
         <div className="odraw-container">
+          <div className="odraw-container-stupid-banner">
+            <img src="https://static.ouorz.com/odraw_match_banner.jpg" />
+          </div>
           {error ? (
-            <Result status="500" title="500" subTitle="数据请求错误" />
-          ) : !data || loadingStatus ? (
             <div>
+              <Result
+                status="500"
+                title="500"
+                subTitle="数据请求错误"
+                extra={
+                  <Link href="/login">
+                    <Button type="primary">重新登录</Button>
+                  </Link>
+                }
+              />
+            </div>
+          ) : !data || loadingStatus ? (
+            <div className="odraw-container-loading">
               <Skeleton active />
               <Skeleton active />
               <Skeleton active />
             </div>
-          ) : data.length > 1 ? (
-            <div>
+          ) : data.length > 2 ? (
+            <div className="odraw-container-div">
               <div className="odraw-container-top">
                 <div className="odraw-container-top-div">
                   <div className="odraw-container-top-info">
                     <h1>{currentUserName}</h1>
-                    <p>{data[1].schoolType}组</p>
+                    <p>{data[2].schoolType}组</p>
                   </div>
                   <div className="odraw-container-top-card">
-                    <div className="left-div">
-                      <p>{data.length - 1} 项</p>
-                      <p>所有项目</p>
-                    </div>
-                    <div className="right-div">
-                      <p>{data[0].unViewCount} 项</p>
-                      <p>暂未抽签</p>
+                    <div className="odraw-container-top-card-inside">
+                      <div className="left-div">
+                        <p>{data.length - 2} 项</p>
+                        <p>{"入围决赛"}</p>
+                      </div>
+                      <div className="right-div">
+                        <p>{data[0].unViewCount - 1} 项</p>
+                        <p>{"暂未抽签"}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -193,7 +210,7 @@ const Index = () => {
                       setMenuItem(1);
                     }}
                   >
-                    <a>项目列表</a>
+                    <a>{"项目列表"}</a>
                   </div>
                   <div
                     className={
@@ -203,67 +220,69 @@ const Index = () => {
                       setMenuItem(2);
                     }}
                   >
-                    <a>密码设置</a>
+                    <a>{"密码设置"}</a>
                   </div>
                 </div>
               </div>
-              <Modal
-                title="抽签窗口"
-                visible={drawModalStatus}
-                onCancel={() => {
-                  cancelDrawModal();
-                }}
-                footer={null}
-              >
-                {!nowDrawNumber ? (
-                  <div className="odraw-draw-div">
-                    <h2>项目抽签</h2>
-                    <p>是否确认进行以下项目的抽签</p>
-                    <div className="odraw-draw-table-div">
-                      <table>
-                        <tr>
-                          <td>项目名称</td>
-                          <td>{drawViewProject}</td>
-                        </tr>
-                        <tr>
-                          <td>项目分类</td>
-                          <td>{drawViewCate}</td>
-                        </tr>
-                        <tr>
-                          <td>所属学校</td>
-                          <td>{drawViewSchool}</td>
-                        </tr>
-                        <tr>
-                          <td>学校类型</td>
-                          <td>{drawViewType}</td>
-                        </tr>
-                      </table>
+              <div>
+                <Modal
+                  title="抽签窗口"
+                  visible={drawModalStatus}
+                  onCancel={() => {
+                    cancelDrawModal();
+                  }}
+                  footer={null}
+                >
+                  {!nowDrawNumber ? (
+                    <div className="odraw-draw-div">
+                      <h2>项目抽签</h2>
+                      <p>是否确认进行以下项目的抽签</p>
+                      <div className="odraw-draw-table-div">
+                        <table>
+                          <tr>
+                            <td>项目名称</td>
+                            <td>{drawViewProject}</td>
+                          </tr>
+                          <tr>
+                            <td>项目分类</td>
+                            <td>{drawViewCate}</td>
+                          </tr>
+                          <tr>
+                            <td>所属学校</td>
+                            <td>{drawViewSchool}</td>
+                          </tr>
+                          <tr>
+                            <td>学校类型</td>
+                            <td>{drawViewType}</td>
+                          </tr>
+                        </table>
+                      </div>
+                      <Button
+                        type="primary"
+                        onClick={() => {
+                          postViewDraw();
+                        }}
+                        size="large"
+                        loading={drawLoading}
+                      >
+                        {"开始抽签"}
+                      </Button>
                     </div>
-                    <Button
-                      type="primary"
-                      onClick={() => {
-                        postViewDraw();
-                      }}
-                      size="large"
-                      loading={drawLoading}
-                    >
-                      开始抽签
-                    </Button>
-                  </div>
-                ) : (
-                  <div className="odraw-draw-div">
-                    <h2>抽签完成</h2>
-                    <h1>{nowDrawNumber}</h1>
-                    <p>
-                      项目&nbsp;<b>{drawViewProject}</b>&nbsp;获得以上抽签号码
-                    </p>
-                  </div>
-                )}
-              </Modal>
+                  ) : (
+                    <div className="odraw-draw-div">
+                      <h2>抽签完成</h2>
+                      <h1>{nowDrawNumber}</h1>
+                      <p>
+                        项目&nbsp;<b>{drawViewProject}</b>&nbsp;获得以上抽签号码
+                      </p>
+                    </div>
+                  )}
+                </Modal>
+              </div>
               <div className="odraw-container-main">
                 {menuItem === 1 ? (
                   <div>
-                    {data.slice(1, data.length).map((item) => {
+                    {data.slice(2, data.length).map((item) => {
                       return (
                         <div
                           className="odraw-container-item"
@@ -277,11 +296,11 @@ const Index = () => {
                             </p>
                           </div>
                           <div className="odraw-admin-key-btn">
-                            {item.drawViewStatus ? (
+                            {item.drawViewStatus && data[1].viewStatus ? (
                               <Button>
                                 抽签编号&nbsp;|&nbsp;<b>{item.drawNumber}</b>
                               </Button>
-                            ) : item.drawNumber ? (
+                            ) : item.drawNumber && data[1].viewStatus ? (
                               <Button
                                 type="primary"
                                 onClick={() => {
@@ -293,11 +312,11 @@ const Index = () => {
                                   );
                                 }}
                               >
-                                开始抽签
+                                {"开始抽签"}
                               </Button>
                             ) : (
                               <Button type="primary" danger>
-                                暂停抽签
+                                {"暂停抽签"}
                               </Button>
                             )}
                           </div>
@@ -328,7 +347,7 @@ const Index = () => {
                           postChangePwd();
                         }}
                       >
-                        提交修改
+                        {"提交修改"}
                       </Button>
                     </div>
                   </div>
@@ -345,7 +364,11 @@ const Index = () => {
     );
   } else {
     if (currentUserName === "odrawAdmin") {
-      return <Admin />;
+      return (
+        <div>
+          <Admin />
+        </div>
+      );
     } else {
       React.useEffect(() => {
         Router.push({
