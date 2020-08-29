@@ -1,5 +1,5 @@
 ## ODraw
-第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台
+第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台前端
 
 <br/>
 
@@ -11,6 +11,7 @@
 #### 前端
 + React.js (Next.js)
 + Ant Design React
++ https://github.com/HelipengTony/odraw
 
 #### 后端
 + MongoDB
@@ -18,6 +19,7 @@
 + Express-JWT
 + Excel.js
 + Convert-excel-to-json
++ https://github.com/HelipengTony/odraw-server
 
 <br/>
 
