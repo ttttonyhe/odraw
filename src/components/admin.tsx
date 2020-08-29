@@ -7,7 +7,7 @@ import currentUserJWTContext from "../utils/currentUserJWTContext";
 import Router from "next/router";
 import { Skeleton, Result, Modal, Button, Input, Upload } from "antd";
 import { UploadOutlined } from "@ant-design/icons";
-import Link from "next/link"
+import Link from "next/link";
 
 const Admin = () => {
   // 读取 Context
@@ -42,7 +42,7 @@ const Admin = () => {
             Authorization: JWTToken,
           },
         }).then((res) => {
-          return res.data.cates;
+          return [{ status: res.data.status }, ...res.data.cates];
         })
     );
 
@@ -102,6 +102,25 @@ const Admin = () => {
       } else {
         alert("该分类还未设置标签");
       }
+    };
+
+    // 提交抽签状态更改请求
+    const alterStatus = () => {
+      axios({
+        method: "post",
+        url: "https://node.ouorz.com/stopViewingDraw",
+        headers: {
+          Authorization: JWTToken,
+        },
+      })
+        .then((res) => {
+          if (res.data.code === 105) {
+            mutate("https://node.ouorz.com/getAllCates");
+          }
+        })
+        .catch((err) => {
+          alert("提交失败\n" + err);
+        });
     };
 
     // 开启 Key 设置
@@ -202,11 +221,16 @@ const Admin = () => {
     return (
       <div className="odraw-container">
         {error ? (
-          <Result status="500" title="500" subTitle="数据请求错误" extra={
-            <Link href="/login">
-              <Button type="primary">重新登录</Button>
-            </Link>
-          } />
+          <Result
+            status="500"
+            title="500"
+            subTitle="数据请求错误"
+            extra={
+              <Link href="/login">
+                <Button type="primary">重新登录</Button>
+              </Link>
+            }
+          />
         ) : !data || loadingStatus ? (
           <div className="odraw-container-loading">
             <Skeleton active />
@@ -220,6 +244,17 @@ const Admin = () => {
                 <div className="odraw-container-top-info">
                   <h1>管理员面板</h1>
                   <p>抽奖平台管理员面板</p>
+                </div>
+                <div className="odraw-container-top-admin-stop">
+                  <Button
+                    type={data[0].status ? "primary" : "default"}
+                    danger
+                    onClick={() => {
+                      alterStatus();
+                    }}
+                  >
+                    <span>{data[0].status ? "暂停抽签" : "启动抽签"}</span>
+                  </Button>
                 </div>
               </div>
               <div className="odraw-container-top-menu">
@@ -303,14 +338,14 @@ const Admin = () => {
             <div className="odraw-container-main">
               {menuItem === 1 ? (
                 <div>
-                  {data.map((item, index) => {
+                  {data.slice(1,data.length).map((item, index) => {
                     return (
                       <div
                         className={
                           "odraw-container-item " +
                           (index !== 0 &&
-                          data[index]["cateType"] !==
-                            data[index - 1]["cateType"]
+                          data[index + 1]["cateType"] !==
+                            data[index]["cateType"]
                             ? "odraw-container-item-divide"
                             : "")
                         }
@@ -462,7 +497,7 @@ const Admin = () => {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="odraw-container-loading">
             <div>
               <Upload {...recordsProps}>
                 <Button>
