@@ -158,9 +158,6 @@ const Index = () => {
     return (
       <div>
         <div className="odraw-container">
-          <div className="odraw-container-stupid-banner">
-            <img src="https://static.ouorz.com/odraw_match_banner.jpg" />
-          </div>
           {error ? (
             <div>
               <Result
@@ -189,15 +186,13 @@ const Index = () => {
                     <p>{data[2].schoolType}组</p>
                   </div>
                   <div className="odraw-container-top-card">
-                    <div className="odraw-container-top-card-inside">
-                      <div className="left-div">
-                        <p>{data.length - 2} 项</p>
-                        <p>{"入围决赛"}</p>
-                      </div>
-                      <div className="right-div">
-                        <p>{data[0].unViewCount - 1} 项</p>
-                        <p>{"暂未抽签"}</p>
-                      </div>
+                    <div className="left-div">
+                      <p>{data.length - 2} 项</p>
+                      <p>{"入围决赛"}</p>
+                    </div>
+                    <div className="right-div">
+                      <p>{data[0].unViewCount - 1} 项</p>
+                      <p>{"暂未抽签"}</p>
                     </div>
                   </div>
                 </div>
