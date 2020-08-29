@@ -42,7 +42,7 @@ const Admin = () => {
             Authorization: JWTToken,
           },
         }).then((res) => {
-          return res.data.cates;
+          return [{ status: res.data.status }, ...res.data.cates];
         })
     );
 
@@ -102,6 +102,25 @@ const Admin = () => {
       } else {
         alert("该分类还未设置标签");
       }
+    };
+
+    // 提交抽签状态更改请求
+    const alterStatus = () => {
+      axios({
+        method: "post",
+        url: "https://node.ouorz.com/stopViewingDraw",
+        headers: {
+          Authorization: JWTToken,
+        },
+      })
+        .then((res) => {
+          if (res.data.code === 105) {
+            mutate("https://node.ouorz.com/getAllCates");
+          }
+        })
+        .catch((err) => {
+          alert("提交失败\n" + err);
+        });
     };
 
     // 开启 Key 设置
@@ -226,6 +245,17 @@ const Admin = () => {
                   <h1>管理员面板</h1>
                   <p>抽奖平台管理员面板</p>
                 </div>
+                <div className="odraw-container-top-admin-stop">
+                  <Button
+                    type={data[0].status ? "primary" : "default"}
+                    danger
+                    onClick={() => {
+                      alterStatus();
+                    }}
+                  >
+                    <span>{data[0].status ? "暂停抽签" : "启动抽签"}</span>
+                  </Button>
+                </div>
               </div>
               <div className="odraw-container-top-menu">
                 <div
@@ -308,14 +338,14 @@ const Admin = () => {
             <div className="odraw-container-main">
               {menuItem === 1 ? (
                 <div>
-                  {data.map((item, index) => {
+                  {data.slice(1,data.length).map((item, index) => {
                     return (
                       <div
                         className={
                           "odraw-container-item " +
                           (index !== 0 &&
-                          data[index]["cateType"] !==
-                            data[index - 1]["cateType"]
+                          data[index + 1]["cateType"] !==
+                            data[index]["cateType"]
                             ? "odraw-container-item-divide"
                             : "")
                         }

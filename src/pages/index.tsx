@@ -180,22 +180,22 @@ const Index = () => {
               <Skeleton active />
               <Skeleton active />
             </div>
-          ) : data.length > 1 ? (
+          ) : data.length > 2 ? (
             <div className="odraw-container-div">
               <div className="odraw-container-top">
                 <div className="odraw-container-top-div">
                   <div className="odraw-container-top-info">
                     <h1>{currentUserName}</h1>
-                    <p>{data[1].schoolType}组</p>
+                    <p>{data[2].schoolType}组</p>
                   </div>
                   <div className="odraw-container-top-card">
                     <div className="odraw-container-top-card-inside">
                       <div className="left-div">
-                        <p>{data.length - 1} 项</p>
+                        <p>{data.length - 2} 项</p>
                         <p>{"入围决赛"}</p>
                       </div>
                       <div className="right-div">
-                        <p>{data[0].unViewCount} 项</p>
+                        <p>{data[0].unViewCount - 1} 项</p>
                         <p>{"暂未抽签"}</p>
                       </div>
                     </div>
@@ -282,7 +282,7 @@ const Index = () => {
               <div className="odraw-container-main">
                 {menuItem === 1 ? (
                   <div>
-                    {data.slice(1, data.length).map((item) => {
+                    {data.slice(2, data.length).map((item) => {
                       return (
                         <div
                           className="odraw-container-item"
@@ -296,11 +296,11 @@ const Index = () => {
                             </p>
                           </div>
                           <div className="odraw-admin-key-btn">
-                            {item.drawViewStatus ? (
+                            {item.drawViewStatus && data[1].viewStatus ? (
                               <Button>
                                 抽签编号&nbsp;|&nbsp;<b>{item.drawNumber}</b>
                               </Button>
-                            ) : item.drawNumber ? (
+                            ) : item.drawNumber && data[1].viewStatus ? (
                               <Button
                                 type="primary"
                                 onClick={() => {
