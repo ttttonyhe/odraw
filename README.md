@@ -1,6 +1,8 @@
 ## ODraw
 第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台前端
 
+![thumbnail](https://i.loli.net/2020/08/30/BJqDwFveozt7L2l.png)
+
 <br/>
 
 `master` branch looks like shit, see the true project at `main` branch
