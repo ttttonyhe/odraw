@@ -1,5 +1,5 @@
 ## ODraw
-第九届「挑战杯·中国联通」安徽省大学生创业计划竞赛抽签平台前端
+「挑战杯」安徽省大学生创业计划竞赛抽签平台前端 (外包项目)
 
 ![thumbnail](https://i.loli.net/2020/08/30/BJqDwFveozt7L2l.png)
 
@@ -13,7 +13,7 @@
 #### 前端
 + React.js (Next.js)
 + Ant Design React
-+ https://github.com/HelipengTony/odraw
++ https://github.com/ttttonyhe/odraw
 
 #### 后端
 + MongoDB
@@ -21,7 +21,7 @@
 + Express-JWT
 + Excel.js
 + Convert-excel-to-json
-+ https://github.com/HelipengTony/odraw-server
++ https://github.com/ttttonyhe/odraw-server
 
 <br/>
 
@@ -34,17 +34,3 @@
 + 项目数据 .xlsx 导入
 + 用户数据 .xlsx 导入
 + 项目数据 .xlsx 导出
-
-<br/>
-
-### 赞助
-Your name will be on the list [Donation](https://www.ouorz.com/donation)
-<br/>
-
-![Donate](https://i.loli.net/2019/02/18/5c6a80afd1e26.png)
-
-<br/>
-
-File an issue if you encountered any problem
-<br/>
-I will reply you as soon as possible
